@@ -9,15 +9,6 @@ GameObject::~GameObject()
 {
 }
 
-/**
- * Inicializador do objeto de jogo
- * Este metodo define informações basicas do 
- * objeto , como o seu spritesheet, sua posição 
- * na tela e se posui colisor, movimento ou animação.
- *
- * @param string sprite_name Nome do spritesheet que já foi previamente carregado
- * @param initial_x
- */
 void GameObject::initialize(string sprite_name, float initial_x, float initial_y, bool has_colision, bool has_movement, bool has_animation)
 {
     objectBody.setSpriteSheet(sprite_name);
