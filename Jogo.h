@@ -1,5 +1,6 @@
 #pragma once
 #include "libUnicornio.h"
+#include "GameObject.h"
 
 class Jogo
 {
@@ -11,5 +12,10 @@ public:
 	void finalizar();
 
 	void executar();
+
+protected:
+
+    GameObject personagem;
+
 };
 

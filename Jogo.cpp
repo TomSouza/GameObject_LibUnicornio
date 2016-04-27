@@ -10,18 +10,25 @@ Jogo::~Jogo()
 
 void Jogo::inicializar()
 {
-	uniInicializar(800, 600, false);
+    uniInicializar(800, 600, false, "GameObject");
+    gJanela.setIcone("./assets/images/game_icon.png");
 
-	//	O resto da inicialização vem aqui!
-	//	...
+    gRecursos.carregarSpriteSheet(
+        "personagem",
+        "./assets/spritesheets/esquilo.png",
+        3, 4, QUALIDADE_ESCALA_MEDIA
+    );
+
+    personagem.initialize("personagem", 400, 400, true, true, true);
+    personagem.changeAnimation(2);
+    personagem.setAnimationSpeed(3);
+    personagem.setSpeed(1.5);
 }
 
 void Jogo::finalizar()
 {
-	//	O resto da finalização vem aqui (provavelmente, em ordem inversa a inicialização)!
-	//	...
-
-	uniFinalizar();
+    gRecursos.descarregarTudo();
+    uniFinalizar();
 }
 
 void Jogo::executar()
@@ -30,8 +37,7 @@ void Jogo::executar()
 	{
 		uniIniciarFrame();
 
-		//	Seu código vem aqui!
-		//	...
+        personagem.draw();
 
 		uniTerminarFrame();
 	}
