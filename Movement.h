@@ -17,6 +17,7 @@ public:
     /// <param name="pos_y"> Posição atual do eixo Y do objeto </param>
     /// <param name="speed"> Velocidade que será utilizada no incremento da posição </param>
     /// <param name="body"> Sprite do objeto </param>
+    /// <param name="motionType"> Tipo do movimento </param>
     void move(float &pos_x, float &pos_y, float speed, Sprite &body, int motionType );
 
     /// <summary>
