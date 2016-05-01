@@ -19,6 +19,8 @@ void GameObject::initialize(string sprite_name, float initial_x, float initial_y
     colisor = has_colision;
     movement = has_movement;
     animate = has_animation;
+
+    motionType = allDirections;
 }
 
 void GameObject::setColisor(bool state)
@@ -44,11 +46,8 @@ void GameObject::draw()
     }
 
     if (movement) {
-        motionEngine.move(position_x, position_y, speed);
+        motionEngine.move(position_x, position_y, speed, objectBody, motionType);
     }
-
-    gDebug.depurar("pos X", position_x);
-    gDebug.depurar("pos Y", position_y);
 
     objectBody.desenhar(position_x, position_y);
 }
@@ -66,4 +65,19 @@ void GameObject::setAnimationSpeed(float speed)
 void GameObject::setSpeed(float speed_to_set)
 {
     speed = speed_to_set;
+}
+
+void GameObject::choiceAnimationToInvert(bool set_up, bool set_down, bool set_left, bool set_right)
+{
+    invert[0] = set_up;
+    invert[1] = set_down;
+    invert[2] = set_left;
+    invert[3] = set_right;
+
+    motionEngine.animationAdjustment(0, 0, 0, 0, 0, invert);
+}
+
+void GameObject::setMovementAnimation(int set_stopped, int set_up, int set_down, int set_left, int set_right)
+{
+    motionEngine.animationAdjustment(set_stopped, set_up, set_down, set_left, set_right, invert);
 }
