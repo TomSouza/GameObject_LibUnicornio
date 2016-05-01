@@ -20,9 +20,11 @@ void Jogo::inicializar()
     );
 
     personagem.initialize("personagem", 400, 400, true, true, true);
-    personagem.changeAnimation(2);
-    personagem.setAnimationSpeed(3);
+    personagem.setMovementAnimation(1, 0, 1, 2, 2);
+    personagem.choiceAnimationToInvert(false, false, true, false);
+    personagem.setAnimationSpeed(5);
     personagem.setSpeed(1.5);
+    personagem.setMovement(true, personagem.crossArrow);
 }
 
 void Jogo::finalizar()
