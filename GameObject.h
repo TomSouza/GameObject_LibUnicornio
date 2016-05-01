@@ -16,7 +16,7 @@ public:
     /// ou como um jogo de plataforma (side2side)
     /// </summary>
     enum movementType {
-        allDirections, side2side
+        allDirections, crossArrow, side2side
     };
 
     /// <summary>
@@ -80,6 +80,25 @@ public:
     /// <param name="speed_to_set"> Velocidade que será passsada para o objeto </param>
     void setSpeed(float speed_to_set);
 
+    /// <summary>
+    /// Define as animações para os movimentos
+    /// </summary>
+    /// <param name="set_up"> Define número da animação para o objeto parado </param>
+    /// <param name="set_up"> Define número da animação para cima </param>
+    /// <param name="set_down"> Define número da animação para baixo </param>
+    /// <param name="set_left"> Define número da animação para esquerda </param>
+    /// <param name="set_right"> Define número da animação para direita </param>
+    void setMovementAnimation(int set_stopped, int set_up, int set_down, int set_left, int set_right);
+
+    /// <summary>
+    /// Seta array que define inversão das animações para os movimentos
+    /// </summary>
+    /// <param name="set_up"> Define inversão da animação para cima </param>
+    /// <param name="set_down"> Define inversão da animação para baixo </param>
+    /// <param name="set_left"> Define inversão da animação para esquerda </param>
+    /// <param name="set_right"> Define inversão da animação para direita </param>
+    void choiceAnimationToInvert(bool set_up, bool set_down, bool set_left, bool set_right);
+
 protected:
 
     bool colisor, movement, animate;
@@ -87,4 +106,5 @@ protected:
     movementType motionType;
     Sprite objectBody;
     float position_x, position_y, speed;
+    bool invert[4] = { false, false, false, false };
 };
