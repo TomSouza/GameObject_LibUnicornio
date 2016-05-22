@@ -1,6 +1,18 @@
 #pragma once
 #include "libUnicornio.h"
 #include "Movement.h"
+#include <vector>
+
+struct objectsLoader {
+    int ident;
+    string name;
+    float pos_x;
+    float pos_y;
+    float rotation = 0;
+    Sprite sprite;
+};
+
+extern vector <objectsLoader> allObjects;
 
 /// <summary>
 /// Classe responsável por controlar funções básicas de um objeto de jogo
@@ -99,12 +111,21 @@ public:
     /// <param name="set_right"> Define inversão da animação para direita </param>
     void choiceAnimationToInvert(bool set_up, bool set_down, bool set_left, bool set_right);
 
+    /// <summary>
+    /// Testa colisão com outros objetos a partir do objeto atual
+    /// </summary>
+    void colisionTester();
+
 protected:
 
+    int identifier;
+    float position_x, position_y, speed;
+    bool invert[4] = { false, false, false, false };
     bool colisor, movement, animate;
     Movement motionEngine;
     movementType motionType;
     Sprite objectBody;
-    float position_x, position_y, speed;
-    bool invert[4] = { false, false, false, false };
+
+    objectsLoader vectorPlaceHolder;
+
 };
