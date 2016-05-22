@@ -16,6 +16,8 @@ public:
 protected:
 
     GameObject personagem;
+    GameObject personagemTeste;
+    GameObject personagemTeste2;
 
 };
 

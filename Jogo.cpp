@@ -25,6 +25,11 @@ void Jogo::inicializar()
     personagem.setAnimationSpeed(5);
     personagem.setSpeed(1.5);
     personagem.setMovement(true, personagem.crossArrow);
+
+    personagemTeste.initialize("personagem", 600, 400, false, false, true);
+    personagemTeste.setSpeed(0);
+    personagemTeste2.initialize("personagem", 200, 400, false, false, true);
+    personagemTeste2.setSpeed(0);
 }
 
 void Jogo::finalizar()
@@ -40,6 +45,8 @@ void Jogo::executar()
 		uniIniciarFrame();
 
         personagem.draw();
+        personagemTeste.draw();
+        personagemTeste2.draw();
 
 		uniTerminarFrame();
 	}
