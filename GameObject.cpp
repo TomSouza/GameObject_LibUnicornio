@@ -20,6 +20,7 @@ void GameObject::initialize(string sprite_name, float initial_x, float initial_y
     position_y = initial_y;
 
     colisor = has_colision;
+    colison_state = false;
     movement = has_movement;
     animate = has_animation;
     motionType = allDirections;
@@ -52,6 +53,7 @@ void GameObject::setAnimation(bool state)
 void GameObject::draw()
 {
     if (!movement && animate) {
+        objectBody.setAnimacao(2);
         objectBody.avancarAnimacao();
     }
 
@@ -99,20 +101,23 @@ void GameObject::setMovementAnimation(int set_stopped, int set_up, int set_down,
 void GameObject::colisionTester()
 {
     int total = allObjects.size();
-    bool colision = false;
+    colison_state = false;
 
     for (int iterator = 0; iterator < total; iterator++) {
 
         if (iterator != identifier) {
-            colision = uniTestarColisao(
+            colison_state = uniTestarColisao(
                 objectBody, position_x, position_y, 0,
                 allObjects[iterator].sprite, allObjects[iterator].pos_x, allObjects[iterator].pos_y, 0
             );
 
-            if (colision == true) {
+            gDebug.depurar("Colidiu", colison_state);
+
+            if (colison_state == true) {
+                colision_identifier = allObjects[iterator].ident;
                 gDebug.depurar("Colidiu com ", allObjects[iterator].name);
                 gDebug.depurar("Colidiu com ident ", allObjects[iterator].ident);
-                continue;
+                break;
             }
         }
     }

@@ -118,10 +118,10 @@ public:
 
 protected:
 
-    int identifier;
+    int identifier, colision_identifier;
     float position_x, position_y, speed;
     bool invert[4] = { false, false, false, false };
-    bool colisor, movement, animate;
+    bool colisor, movement, animate, colison_state;
     Movement motionEngine;
     movementType motionType;
     Sprite objectBody;
