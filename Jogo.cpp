@@ -30,6 +30,8 @@ void Jogo::inicializar()
     personagemTeste.setSpeed(0);
     personagemTeste2.initialize("personagem", 600, 200, false, false, true);
     personagemTeste2.setSpeed(0);
+    personagemTeste3.initialize("personagem", 200, 300, false, false, false);
+    personagemTeste3.setSpeed(0);
 }
 
 void Jogo::finalizar()
@@ -47,6 +49,7 @@ void Jogo::executar()
         personagem.execute();
         personagemTeste.execute();
         personagemTeste2.execute();
+        personagemTeste3.execute();
 
 		uniTerminarFrame();
 	}

@@ -18,6 +18,7 @@ protected:
     Personagem personagem;
     Personagem personagemTeste;
     Personagem personagemTeste2;
+    Personagem personagemTeste3;
 
 };
 
