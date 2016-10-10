@@ -9,5 +9,5 @@ public:
     ~Personagem();
 
     void execute();
-    void colisionEvent(int objectIdent);
+    void colisionEvent(objectsLoader objectIdent);
 };

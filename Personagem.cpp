@@ -14,31 +14,24 @@ void Personagem::execute()
 {
     draw();
 
-    if (colison_state == true) {
-        colisionEvent(colision_identifier);
-    } else {
+    if (colison_state == false) {
         objectBody.setCorAzul(255);
         objectBody.setCorVerde(255);
         objectBody.setCorVermelho(255);
     }
 }
 
-void Personagem::colisionEvent(int objectIdent)
+void Personagem::colisionEvent(objectsLoader objectIdent)
 {
-    string otherName = allObjects[objectIdent].name;
+    string otherActor = objectIdent.name;
 
-    if (otherName == "personagem") {
-        if (allObjects[objectIdent].ident == 1) {
-
-            objectBody.setCorAzul(100)
-                ;
-            objectBody.setCorVerde(200);
-            objectBody.setCorVermelho(100);
-        } else if (allObjects[objectIdent].ident == 2) {
-            objectBody.setCorAzul(200);
-            objectBody.setCorVerde(100);
-            objectBody.setCorVermelho(100);
-        }
-        
+    if (otherActor == "teste1") {
+        objectBody.setCorAzul(100);
+        objectBody.setCorVerde(200);
+        objectBody.setCorVermelho(100);
+    } else if (otherActor == "teste2") {
+        objectBody.setCorAzul(200);
+        objectBody.setCorVerde(100);
+        objectBody.setCorVermelho(100);
     }
 }
