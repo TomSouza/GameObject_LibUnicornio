@@ -1,6 +1,6 @@
 #pragma once
 #include "libUnicornio.h"
-#include "GameObject.h"
+#include "Personagem.h"
 
 class Jogo
 {
@@ -15,7 +15,10 @@ public:
 
 protected:
 
-    GameObject personagem;
+    Personagem personagem;
+    Personagem personagemTeste;
+    Personagem personagemTeste2;
+    Personagem personagemTeste3;
 
 };
 

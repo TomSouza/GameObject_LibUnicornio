@@ -53,7 +53,7 @@ protected:
     };
 
     animateMove animations;
-    float speed;
+    float speed = 0;
 
     const int invert_size = 4;
     bool inversions[4] = { };

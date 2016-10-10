@@ -25,6 +25,15 @@ void Jogo::inicializar()
     personagem.setAnimationSpeed(5);
     personagem.setSpeed(1.5);
     personagem.setMovement(true, personagem.crossArrow);
+    personagem.setObjectActor("jogador");
+
+    personagemTeste.initialize("personagem", 600, 400, false, false, true);
+    personagemTeste2.initialize("personagem", 600, 200, false, false, true);
+    personagemTeste3.initialize("personagem", 200, 300, false, false, false);
+
+    personagemTeste.setObjectActor("teste1");
+    personagemTeste2.setObjectActor("teste2");
+    personagemTeste3.setObjectActor("teste3");
 }
 
 void Jogo::finalizar()
@@ -39,7 +48,10 @@ void Jogo::executar()
 	{
 		uniIniciarFrame();
 
-        personagem.draw();
+        personagem.execute();
+        personagemTeste.execute();
+        personagemTeste2.execute();
+        personagemTeste3.execute();
 
 		uniTerminarFrame();
 	}

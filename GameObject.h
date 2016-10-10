@@ -1,6 +1,18 @@
 #pragma once
 #include "libUnicornio.h"
 #include "Movement.h"
+#include <vector>
+
+struct objectsLoader {
+    int ident;
+    string name;
+    float pos_x;
+    float pos_y;
+    float rotation = 0;
+    Sprite sprite;
+};
+
+extern vector <objectsLoader> allObjects;
 
 /// <summary>
 /// Classe responsável por controlar funções básicas de um objeto de jogo
@@ -57,6 +69,12 @@ public:
     void setAnimation(bool state);
 
     /// <summary>
+    /// Atribui um ator ao objeto e modifica o nome deste objeto no array de objetos
+    /// </summary>
+    /// <param name="state"> Estado de atividade da animação </param>
+    void setObjectActor(string object_actor);
+
+    /// <summary>
     /// Desenha o obejto na tela do jogo; também possui controle sobre 
     /// a verificação do movimento e das colisões
     /// </summary>
@@ -99,12 +117,28 @@ public:
     /// <param name="set_right"> Define inversão da animação para direita </param>
     void choiceAnimationToInvert(bool set_up, bool set_down, bool set_left, bool set_right);
 
+    /// <summary>
+    /// Testa colisão com outros objetos a partir do objeto atual
+    /// </summary>
+    void colisionTester();
+
+    /// <summary>
+    /// Evento padrão gerado pela colisão
+    /// </summary>
+    /// <param name="colider"> Array de informações sobre o objeto que colidiu </param>
+    virtual void colisionEvent(objectsLoader colider);
+
 protected:
 
-    bool colisor, movement, animate;
+    int identifier, colision_identifier;
+    float position_x, position_y, speed;
+    string actor;
+    bool invert[4] = { false, false, false, false };
+    bool colisor, movement, animate, colison_state;
     Movement motionEngine;
     movementType motionType;
     Sprite objectBody;
-    float position_x, position_y, speed;
-    bool invert[4] = { false, false, false, false };
+
+    objectsLoader vectorPlaceHolder;
+
 };
