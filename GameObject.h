@@ -69,6 +69,12 @@ public:
     void setAnimation(bool state);
 
     /// <summary>
+    /// Atribui um ator ao objeto e modifica o nome deste objeto no array de objetos
+    /// </summary>
+    /// <param name="state"> Estado de atividade da animação </param>
+    void setObjectActor(string object_actor);
+
+    /// <summary>
     /// Desenha o obejto na tela do jogo; também possui controle sobre 
     /// a verificação do movimento e das colisões
     /// </summary>
@@ -116,10 +122,17 @@ public:
     /// </summary>
     void colisionTester();
 
+    /// <summary>
+    /// Evento padrão gerado pela colisão
+    /// </summary>
+    /// <param name="colider"> Array de informações sobre o objeto que colidiu </param>
+    virtual void colisionEvent(objectsLoader colider);
+
 protected:
 
     int identifier, colision_identifier;
     float position_x, position_y, speed;
+    string actor;
     bool invert[4] = { false, false, false, false };
     bool colisor, movement, animate, colison_state;
     Movement motionEngine;

@@ -50,6 +50,12 @@ void GameObject::setAnimation(bool state)
     animate = state;
 }
 
+void GameObject::setObjectActor(string object_actor)
+{
+    actor = object_actor;
+    allObjects[identifier].name = actor;
+}
+
 void GameObject::draw()
 {
     if (!movement && animate) {
@@ -117,8 +123,21 @@ void GameObject::colisionTester()
                 colision_identifier = allObjects[iterator].ident;
                 gDebug.depurar("Colidiu com ", allObjects[iterator].name);
                 gDebug.depurar("Colidiu com ident ", allObjects[iterator].ident);
+                colisionEvent(allObjects[colision_identifier]);
                 break;
             }
         }
+    }
+}
+
+void GameObject::colisionEvent(objectsLoader colider)
+{
+    string otherActor = colider.name;
+
+    if (otherActor == "teste1") {
+        gDebug.depurar("Colidiu com VERDE", otherActor);
+    }
+    else if (otherActor == "teste2") {
+        gDebug.depurar("Colidiu com VERDE", otherActor);
     }
 }
